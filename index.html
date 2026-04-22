@@ -453,6 +453,36 @@
             </div>
         </div>
     </footer>
+<!-- ==================== CHATBOT ==================== -->
+<div id="chatBotWrap">
+    <button id="chatToggle" aria-label="Open chat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <svg id="chatCloseIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div id="chatBox">
+        <div id="chatHead">
+            <div style="display:flex;align-items:center;gap:10px">
+                <div id="chatAvatar">O</div>
+                <div>
+                    <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:#f3f4f6">Octave Assistant</div>
+                    <div style="font-size:11px;color:#34d399;display:flex;align-items:center;gap:4px;margin-top:1px"><span style="width:5px;height:5px;border-radius:50%;background:#34d399"></span>Online</div>
+                </div>
+            </div>
+        </div>
+        <div id="chatMsgs"></div>
+        <div id="chatQuickReplies">
+            <button class="qr-btn" data-q="What services do you offer?">Services</button>
+            <button class="qr-btn" data-q="How can I contact you?">Contact</button>
+            <button class="qr-btn" data-q="Tell me about pricing">Pricing</button>
+        </div>
+        <div id="chatInputRow">
+            <input type="text" id="chatIn" placeholder="Type a message..." autocomplete="off">
+            <button id="chatSendBtn" aria-label="Send">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+        </div>
+    </div>
+</div>
     <script src="js/script.js"></script>
 </body>
 </html>
