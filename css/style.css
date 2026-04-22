@@ -829,30 +829,51 @@ img { max-width: 100%; display: block; }
 /* ========================================
    SCROLL TO TOP FAB
    ======================================== */
+
 .fab-top {
+
     position: fixed; bottom: 32px; right: 32px; z-index: 500;
+
     width: 52px; height: 52px; border-radius: 50%;
-    background: linear-gradient(135deg, #22c55e, #16a34a);
+
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+
     border: none; cursor: pointer;
+
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 8px 30px rgba(34,197,94,0.4), 0 2px 8px rgba(0,0,0,0.3);
+
+    box-shadow: 0 8px 30px rgba(99,102,241,0.4), 0 2px 8px rgba(0,0,0,0.3);
+
     opacity: 0; visibility: hidden; pointer-events: none;
+
     transform: translateY(16px) scale(0.85);
+
     transition: opacity 0.35s ease, visibility 0.35s ease,
+
                 transform 0.35s cubic-bezier(0.16,1,0.3,1),
+
                 box-shadow 0.25s ease;
+
 }
+
 .fab-top.visible {
     opacity: 1; visibility: visible;
     pointer-events: auto; transform: translateY(0) scale(1);
+
 }
 .fab-top:hover {
     transform: translateY(-3px) scale(1.08);
-    box-shadow: 0 14px 40px rgba(34,197,94,0.55), 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 14px 40px rgba(99,102,241,0.55), 0 4px 12px rgba(0,0,0,0.3);
 }
-.fab-top:active { transform: scale(0.96); }
-.fab-top svg { width: 22px; height: 22px; color: #fff; stroke-width: 2.5; }
+.fab-top:active { 
 
+    transform: scale(0.96); 
+
+}
+.fab-top svg { 
+
+    width: 22px; height: 22px; color: #fff; stroke-width: 2.5; 
+}
 /* ========================================
    OFFER MODAL
    ======================================== */
