@@ -161,3 +161,131 @@
     fabTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+/* ========================================
+   CHATBOT — Groq API (no IIFE, direct)
+   ======================================== */
+
+var CB_API = 'https://api.groq.com/openai/v1/chat/completions';
+var CB_KEY = 'MY_API_KEY';
+var CB_MODEL = 'llama-3.3-70b-versatile';
+
+var CB_SYSTEM = 'You are a friendly AI assistant for Octave Infosys, a premier IT consultancy in Mumbai, India. Answer ONLY from this knowledge base:\n\nCOMPANY: Octave Infosys\nADDRESS: Shop No. 8, Zaver Road, Mulund West, Mumbai — 400080\nPHONE: +91 22 2560 0000\nEMAIL: info@octaveinfosys.com\nWEBSITE: https://octaveinfosys.com\nHOURS: Mon–Sat 10:00 AM – 7:00 PM\nCERTS: ISO Certified, MSME Registered\nEXPERIENCE: 8+ years, 200+ projects, 98% satisfaction\n\nSERVICES:\n1. Software Development — Custom web apps, mobile apps, enterprise software, APIs, SaaS using React, Node.js, Python, .NET, Java, Flutter. Agile methodology.\n2. Digital Marketing — SEO, SEM, Social Media Marketing, Google Ads, Content Marketing, Email Marketing, Online Reputation Management. Monthly analytics reports.\n3. IT Consultancy — Technology roadmaps, infrastructure audits, cloud migration, cybersecurity assessments, network architecture, digital transformation consulting.\n4. Web Development — Responsive websites, e-commerce (Shopify, WooCommerce), CMS (WordPress), PWAs, landing pages.\n5. Mobile App Development — Native iOS/Android, cross-platform (React Native, Flutter), UI/UX design, app store optimization.\n6. Cloud Solutions — AWS, Azure, Google Cloud, cloud migration, DevOps, Docker, Kubernetes, cost optimization.\n\nINDUSTRIES: Healthcare, FinTech, E-commerce, Logistics, Real Estate, EdTech, Manufacturing, Hospitality.\n\nWHY US: Dedicated PMs, transparent pricing, post-delivery support, NDA protection, 98% on-time delivery, 50+ developers, ISO quality.\n\nPRICING: Custom quotes, flexible models (Fixed Price, Time & Material, Dedicated Team), free consultation, EMI options for large projects.\n\nMISSION: Deliver innovative, reliable technology solutions for digital transformation.\nVISION: Be a global leader in high-quality IT infrastructure solutions.\n\nRULES: Be warm and concise (2-3 paragraphs). Use bullets for lists. For pricing, suggest contacting for custom quote. If asked something outside this info, say you don\'t have that info and suggest contacting info@octaveinfosys.com or +91 22 2560 0000. Never make up facts.';
+
+var cbHistory = [{ role: 'system', content: CB_SYSTEM }];
+var cbBusy = false;
+
+// Elements
+var cbWrap = document.getElementById('chatBotWrap');
+var cbToggle = document.getElementById('chatToggle');
+var cbCloseIcon = document.getElementById('chatCloseIcon');
+var cbMsgs = document.getElementById('chatMsgs');
+var cbIn = document.getElementById('chatIn');
+var cbSendBtn = document.getElementById('chatSendBtn');
+var cbQuick = document.getElementById('chatQuickReplies');
+
+// ---- Toggle ----
+cbToggle.addEventListener('click', function () {
+    var isOpen = cbWrap.classList.toggle('open');
+    cbCloseIcon.style.display = isOpen ? 'block' : 'none';
+    cbToggle.children[0].style.display = isOpen ? 'none' : 'block';
+    if (isOpen) cbIn.focus();
+});
+
+// ---- Scroll ----
+function cbScroll() { cbMsgs.scrollTop = cbMsgs.scrollHeight; }
+
+// ---- Escape ----
+function cbEsc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ---- Add message ----
+function cbAdd(text, who) {
+    var av = who === 'bot' ? 'O' : 'U';
+    var div = document.createElement('div');
+    div.className = 'cb-msg cb-msg--' + who;
+    div.innerHTML = '<div class="cb-av">' + av + '</div><div class="cb-bubble">' + cbEsc(text) + '</div>';
+    cbMsgs.appendChild(div);
+    cbScroll();
+    return div;
+}
+
+// ---- Typing ----
+function cbShowTyping() {
+    var d = document.createElement('div');
+    d.className = 'cb-msg cb-msg--bot';
+    d.id = 'cbTyping';
+    d.innerHTML = '<div class="cb-av">O</div><div class="cb-bubble"><div class="cb-typing"><span></span><span></span><span></span></div></div>';
+    cbMsgs.appendChild(d);
+    cbScroll();
+}
+function cbHideTyping() { var e = document.getElementById('cbTyping'); if (e) e.remove(); }
+
+// ---- Lock/Unlock ----
+function cbLock(v) {
+    cbBusy = v;
+    cbSendBtn.disabled = v;
+    cbIn.disabled = v;
+    var btns = document.querySelectorAll('.qr-btn');
+    for (var i = 0; i < btns.length; i++) btns[i].disabled = v;
+}
+
+// ---- Send to Groq ----
+function cbSend(text) {
+    if (!text || !text.trim() || cbBusy) return;
+    text = text.trim();
+
+    // Hide quick replies
+    if (cbQuick) cbQuick.style.display = 'none';
+
+    // User bubble
+    cbAdd(text, 'user');
+    cbHistory.push({ role: 'user', content: text });
+
+    // Typing
+    cbLock(true);
+    cbShowTyping();
+
+    fetch(CB_API, {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + CB_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model: CB_MODEL, messages: cbHistory, temperature: 0.7, max_tokens: 700 })
+    })
+    .then(function (r) {
+        if (!r.ok) throw new Error('API ' + r.status);
+        return r.json();
+    })
+    .then(function (data) {
+        var reply = data.choices[0].message.content.trim();
+        cbHideTyping();
+        cbAdd(reply, 'bot');
+        cbHistory.push({ role: 'assistant', content: reply });
+        // Trim history
+        if (cbHistory.length > 21) cbHistory = [cbHistory[0]].concat(cbHistory.slice(-20));
+    })
+    .catch(function (err) {
+        cbHideTyping();
+        var el = cbAdd('Sorry, something went wrong. Please try again or contact us at info@octaveinfosys.com', 'bot');
+        el.querySelector('.cb-bubble').classList.add('cb-bubble--err');
+        console.error('Chatbot error:', err);
+    })
+    .then(function () { cbLock(false); });
+}
+
+// ---- Input send ----
+cbSendBtn.addEventListener('click', function () {
+    var t = cbIn.value; cbIn.value = ''; cbSend(t);
+});
+cbIn.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); var t = cbIn.value; cbIn.value = ''; cbSend(t); }
+});
+
+// ---- Quick replies ----
+var qrBtns = document.querySelectorAll('.qr-btn');
+for (var i = 0; i < qrBtns.length; i++) {
+    qrBtns[i].addEventListener('click', function () { cbSend(this.getAttribute('data-q')); });
+}
+
+// ---- Welcome ----
+setTimeout(function () {
+    cbAdd("Hi! \uD83D\uDC4B I'm the Octave Infosys assistant. Ask me about our services, pricing, or how to reach us.", 'bot');
+}, 500);
