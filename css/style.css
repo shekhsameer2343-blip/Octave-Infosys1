@@ -769,6 +769,64 @@ img { max-width: 100%; display: block; }
 
 
 /* ========================================
+   MISSION & VISION
+   ======================================== */
+.mission-vision { padding: 80px 0; position: relative; z-index: 1; }
+.mv__grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.mv-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 24px; padding: 48px 44px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    position: relative; overflow: hidden;
+}
+.mv-card::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+}
+.mv-card--mission::after { background: linear-gradient(90deg, #ef4444, #f97316); }
+.mv-card--vision::after  { background: linear-gradient(90deg, #22d3ee, #34d399); }
+.mv-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.14);
+    box-shadow: 0 32px 64px rgba(0,0,0,0.25);
+}
+.mv-card:hover::after { transform: scaleX(1); }
+.mv-card__icon-wrap {
+    width: 64px; height: 64px; border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; margin: 0 auto 28px;
+}
+.mv-card--mission .mv-card__icon-wrap {
+    background: rgba(239,68,68,0.12);
+    border: 1px solid rgba(239,68,68,0.2);
+    box-shadow: 0 0 30px rgba(239,68,68,0.1);
+}
+.mv-card--vision .mv-card__icon-wrap {
+    background: rgba(52,211,153,0.12);
+    border: 1px solid rgba(52,211,153,0.2);
+    box-shadow: 0 0 30px rgba(52,211,153,0.1);
+}
+.mv-card__title {
+    font-family: 'Sora', sans-serif;
+    font-size: 22px; font-weight: 700;
+    color: #f3f4f6; margin-bottom: 18px;
+    letter-spacing: -0.025em;
+}
+.mv-card__text {
+    font-size: 15px; font-weight: 300;
+    color: #9ca3af; line-height: 1.85;
+    max-width: 380px; margin: 0 auto;
+}
+@media (max-width: 640px) { .mv__grid { grid-template-columns: 1fr; } }
+
+/* ========================================
    SCROLL TO TOP FAB
    ======================================== */
 .fab-top {
