@@ -95,3 +95,58 @@
             logoTextMain.style.display = 'none';
         }
     });
+
+/* ========================================
+       OFFER MODAL
+       ======================================== */
+    const offerModal = document.getElementById('offerModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalSkip  = document.getElementById('modalSkip');
+    const modalCta   = document.getElementById('modalCta');
+ 
+    function openModal() {
+        offerModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        offerModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+ 
+    // Open after 1 second on page load
+    setTimeout(openModal, 1000);
+ 
+    modalClose.addEventListener('click', closeModal);
+    modalSkip.addEventListener('click', closeModal);
+    modalCta.addEventListener('click', () => {
+        closeModal();
+        document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+    });
+    // Close on backdrop click
+    offerModal.addEventListener('click', e => {
+        if (e.target === offerModal) closeModal();
+    });
+    // Close on Escape key
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeModal();
+    });
+ 
+    /* Countdown timer — counts down from 23:59:00 */
+    (function() {
+        let total = 23 * 3600 + 59 * 60;
+        const hEl = document.getElementById('cd-hours');
+        const mEl = document.getElementById('cd-mins');
+        const sEl = document.getElementById('cd-secs');
+        function tick() {
+            if (total <= 0) return;
+            const h = Math.floor(total / 3600);
+            const m = Math.floor((total % 3600) / 60);
+            const s = total % 60;
+            hEl.textContent = String(h).padStart(2,'0');
+            mEl.textContent = String(m).padStart(2,'0');
+            sEl.textContent = String(s).padStart(2,'0');
+            total--;
+        }
+        tick();
+        setInterval(tick, 1000);
+    })();

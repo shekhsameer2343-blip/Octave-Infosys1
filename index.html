@@ -14,6 +14,78 @@
     <div class="cursor" id="cursor"></div>
     <div class="cursor-ring" id="cursorRing"></div>
  
+
+
+<!-- ==================== OFFER MODAL ==================== -->
+    <div class="modal-backdrop" id="offerModal" role="dialog" aria-modal="true" aria-label="Special Offer">
+        <div class="modal">
+            <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+ 
+            <!-- Top gradient section -->
+            <div class="modal__top">
+                <div class="modal__badge">
+                    <span class="modal__badge-dot"></span>
+                    Limited Time Offer
+                </div>
+                <div class="modal__offer-tag"><small>UP TO</small> 30<small>%</small></div>
+                <h2 class="modal__top-title">OFF on All IT Services</h2>
+                <p class="modal__top-sub">New clients only · Valid this month · No hidden charges</p>
+            </div>
+ 
+            <!-- Body section -->
+            <div class="modal__body">
+ 
+                <!-- Countdown -->
+                <div class="modal__countdown">
+                    <div class="countdown-block">
+                        <span class="countdown-block__num" id="cd-hours">23</span>
+                        <span class="countdown-block__label">Hours</span>
+                    </div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-block">
+                        <span class="countdown-block__num" id="cd-mins">59</span>
+                        <span class="countdown-block__label">Mins</span>
+                    </div>
+                    <span class="countdown-sep">:</span>
+                    <div class="countdown-block">
+                        <span class="countdown-block__num" id="cd-secs">00</span>
+                        <span class="countdown-block__label">Secs</span>
+                    </div>
+                </div>
+ 
+                <!-- Perks -->
+                <div class="modal__perks">
+                    <div class="modal__perk">
+                        <div class="modal__perk-icon">💻</div>
+                        <span><strong>Software Development</strong> — 30% off on custom builds</span>
+                    </div>
+                    <div class="modal__perk">
+                        <div class="modal__perk-icon">📈</div>
+                        <span><strong>Digital Marketing</strong> — Free 1-month SEO audit included</span>
+                    </div>
+                    <div class="modal__perk">
+                        <div class="modal__perk-icon">🛡️</div>
+                        <span><strong>IT Consultancy</strong> — Free infrastructure assessment</span>
+                    </div>
+                </div>
+ 
+                <div class="modal__timer">
+                    <span class="modal__timer-dot"></span>
+                    Offer expires soon — grab it before it's gone!
+                </div>
+ 
+                <div class="modal__actions">
+                    <button class="modal__cta" id="modalCta">
+                        🎉 Claim My Offer Now
+                    </button>
+                    <button class="modal__skip" id="modalSkip">No thanks, I'll pay full price</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+   
+
     <!-- Background -->
     <div class="bg-mesh"></div>
     <div class="bg-grid"></div>
@@ -24,14 +96,13 @@
         <div class="container">
             <a href="#hero" class="logo">
                 <!-- Try to load logo image; fallback to text -->
-                <img src="images/logo.jpg" alt="" class="logo__img"
+                <img src="images/logo.png" alt="" class="logo__img"
                     onerror="this.style.display='none'; document.getElementById('logoText').style.display='flex'">
                 <span class="logo__text" id="logoText" style="display:none;">
                     Octave<span>Infosys</span>
                 </span>
                 <!-- Always show text name beside logo -->
-                <span class="logo__text" id="logoTextMain">Octave<span>Infosys</span></span>
-            </a>
+                           </a>
             <nav class="nav" id="mainNav">
                 <ul class="nav__list">
                     <li><a href="#hero" class="nav__link">Home</a></li>
