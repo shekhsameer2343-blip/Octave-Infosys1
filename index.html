@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaunchPad — Your Journey Starts Here</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="bg-glow bg-glow--purple"></div>
+    <div class="bg-glow bg-glow--cyan"></div>
+    <div class="bg-glow bg-glow--pink"></div>
+    <div class="noise-overlay"></div>
+
+
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">L</div>
+                <span>LaunchPad</span>
+            </a>
+
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li><a href="#hero" class="nav__link">Home</a></li>
+                    <li><a href="#features" class="nav__link">Features</a></li>
+                    <li><a href="#" class="nav__link">About</a></li>
+                    <li><a href="#" class="nav__link">Contact</a></li>
+                </ul>
+                <a href="#" class="btn btn--primary">
+                    Get Started
+                    <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                </a>
+            </nav>
+
+            <button class="nav__toggle" id="menuToggle" aria-label="Toggle menu">
+                <i data-lucide="menu" style="width:24px;height:24px;"></i>
+            </button>
+        </div>
+    </header>
+
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#hero" class="mobile-menu__link" onclick="closeMobileMenu()">Home</a>
+        <a href="#features" class="mobile-menu__link" onclick="closeMobileMenu()">Features</a>
+        <a href="#" class="mobile-menu__link" onclick="closeMobileMenu()">About</a>
+        <a href="#" class="mobile-menu__link" onclick="closeMobileMenu()">Contact</a>
+        <a href="#" class="btn btn--primary" onclick="closeMobileMenu()" style="margin-top: 16px;">
+            Get Started
+        </a>
+    </div>
+
+
+    <main class="relative">
+
+        <section class="hero" id="hero">
+            <div class="hero__content">
+                <div class="hero__badge">
+                    <span class="hero__badge-dot"></span>
+                    Now available — v1.0 is live
+                </div>
+
+                <h1 class="hero__title">
+                    Build something<br>
+                    <span class="hero__title-gradient">truly remarkable</span>
+                </h1>
+
+                <p class="hero__subtitle">
+                    A clean starting point for your next web project.
+                    Crafted with care, designed to impress, and ready to grow with you.
+                </p>
+
+                <div class="hero__actions">
+                    <a href="#" class="btn btn--primary btn--large">
+                        Start Building
+                        <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                    </a>
+                    <a href="#features" class="btn btn--outline btn--large">
+                        Learn More
+                        <i data-lucide="chevron-down" style="width:18px;height:18px;"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero__scroll">
+                <span class="hero__scroll-text">Scroll</span>
+                <div class="hero__scroll-line"></div>
+            </div>
+        </section>
+
+
+        <section class="features" id="features">
+            <div class="container">
+                <div class="features__header reveal">
+                    <span class="features__label">Why LaunchPad</span>
+                    <h2 class="features__title">Everything you need to start</h2>
+                    <p class="features__desc">
+                        No bloat, no complexity — just the essentials crafted with precision.
+                    </p>
+                </div>
+
+                <div class="features__grid">
+                    <div class="feature-card reveal reveal--delay-1">
+                        <div class="feature-card__icon feature-card__icon--indigo">
+                            <i data-lucide="zap" style="width:22px;height:22px;"></i>
+                        </div>
+                        <h3 class="feature-card__title">Lightning Fast</h3>
+                        <p class="feature-card__desc">
+                            Optimized for performance from the ground up. Every millisecond counts.
+                        </p>
+                    </div>
+
+                    <div class="feature-card reveal reveal--delay-2">
+                        <div class="feature-card__icon feature-card__icon--cyan">
+                            <i data-lucide="layout" style="width:22px;height:22px;"></i>
+                        </div>
+                        <h3 class="feature-card__title">Clean Design</h3>
+                        <p class="feature-card__desc">
+                            Minimal, modern aesthetics that let your content breathe and shine.
+                        </p>
+                    </div>
+
+                    <div class="feature-card reveal reveal--delay-3">
+                        <div class="feature-card__icon feature-card__icon--emerald">
+                            <i data-lucide="shield-check" style="width:22px;height:22px;"></i>
+                        </div>
+                        <h3 class="feature-card__title">Solid Foundation</h3>
+                        <p class="feature-card__desc">
+                            Semantic HTML, proper structure, and best practices baked right in.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="footer relative">
+        <div class="container">
+            <div class="footer__left">
+                <a href="#" class="logo" style="font-size:18px;">
+                    <div class="logo-icon" style="width:30px;height:30px;font-size:14px;border-radius:8px;">L</div>
+                    <span>LaunchPad</span>
+                </a>
+                <p class="footer__copy">&copy; 2025 LaunchPad. All rights reserved.</p>
+            </div>
+
+            <div class="footer__links">
+                <a href="#" class="footer__link">Privacy</a>
+                <a href="#" class="footer__link">Terms</a>
+                <a href="#" class="footer__link">Contact</a>
+            </div>
+
+            <div class="footer__socials">
+                <a href="#" class="footer__social" aria-label="GitHub">
+                    <i data-lucide="github" style="width:18px;height:18px;"></i>
+                </a>
+                <a href="#" class="footer__social" aria-label="Twitter">
+                    <i data-lucide="twitter" style="width:18px;height:18px;"></i>
+                </a>
+                <a href="#" class="footer__social" aria-label="LinkedIn">
+                    <i data-lucide="linkedin" style="width:18px;height:18px;"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
