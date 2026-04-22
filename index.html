@@ -3,179 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaunchPad — Your Journey Starts Here</title>
-
+    <title>Octave Infosys — Innovating Digital Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <script src="https://unpkg.com/lucide@latest"></script>
-
     <link rel="stylesheet" href="css/style.css">
 </head>
-
-<body>
-
-    <div class="bg-glow bg-glow--purple"></div>
-    <div class="bg-glow bg-glow--cyan"></div>
-    <div class="bg-glow bg-glow--pink"></div>
-    <div class="noise-overlay"></div>
-
-
+ <!-- Custom cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+ 
+    <!-- Background -->
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+    <div class="noise"></div>
+ 
+    <!-- ==================== HEADER ==================== -->
     <header class="header" id="header">
         <div class="container">
-            <a href="#" class="logo">
-                <div class="logo-icon">L</div>
-                <span>LaunchPad</span>
+            <a href="#hero" class="logo">
+                <!-- Try to load logo image; fallback to text -->
+                <img src="images/logo.jpg" alt="" class="logo__img"
+                    onerror="this.style.display='none'; document.getElementById('logoText').style.display='flex'">
+                <span class="logo__text" id="logoText" style="display:none;">
+                    Octave<span>Infosys</span>
+                </span>
+                <!-- Always show text name beside logo -->
+                <span class="logo__text" id="logoTextMain">Octave<span>Infosys</span></span>
             </a>
-
-            <nav class="nav">
+            <nav class="nav" id="mainNav">
                 <ul class="nav__list">
                     <li><a href="#hero" class="nav__link">Home</a></li>
-                    <li><a href="#features" class="nav__link">Features</a></li>
-                    <li><a href="#" class="nav__link">About</a></li>
-                    <li><a href="#" class="nav__link">Contact</a></li>
+                    <li><a href="#services" class="nav__link">Services</a></li>
+                    <li><a href="#gallery" class="nav__link">Gallery</a></li>
+                    <li><a href="#testimonials" class="nav__link">Testimonials</a></li>
+                    <li><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
-                <a href="#" class="btn btn--primary">
-                    Get Started
-                    <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
-                </a>
+                <a href="#contact" class="btn--header">Inquire Now</a>
             </nav>
-
             <button class="nav__toggle" id="menuToggle" aria-label="Toggle menu">
-                <i data-lucide="menu" style="width:24px;height:24px;"></i>
+                <span></span><span></span><span></span>
             </button>
         </div>
     </header>
-
-
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#hero" class="mobile-menu__link" onclick="closeMobileMenu()">Home</a>
-        <a href="#features" class="mobile-menu__link" onclick="closeMobileMenu()">Features</a>
-        <a href="#" class="mobile-menu__link" onclick="closeMobileMenu()">About</a>
-        <a href="#" class="mobile-menu__link" onclick="closeMobileMenu()">Contact</a>
-        <a href="#" class="btn btn--primary" onclick="closeMobileMenu()" style="margin-top: 16px;">
-            Get Started
-        </a>
-    </div>
-
-
-    <main class="relative">
-
+ 
+    <main>
+ 
+        <!-- ==================== HERO ==================== -->
         <section class="hero" id="hero">
-            <div class="hero__content">
-                <div class="hero__badge">
-                    <span class="hero__badge-dot"></span>
-                    Now available — v1.0 is live
-                </div>
-
-                <h1 class="hero__title">
-                    Build something<br>
-                    <span class="hero__title-gradient">truly remarkable</span>
-                </h1>
-
-                <p class="hero__subtitle">
-                    A clean starting point for your next web project.
-                    Crafted with care, designed to impress, and ready to grow with you.
-                </p>
-
-                <div class="hero__actions">
-                    <a href="#" class="btn btn--primary btn--large">
-                        Start Building
-                        <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
-                    </a>
-                    <a href="#features" class="btn btn--outline btn--large">
-                        Learn More
-                        <i data-lucide="chevron-down" style="width:18px;height:18px;"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="hero__scroll">
-                <span class="hero__scroll-text">Scroll</span>
-                <div class="hero__scroll-line"></div>
-            </div>
-        </section>
-
-
-        <section class="features" id="features">
+            <!-- Floating orbs -->
+            <div class="hero__orb hero__orb--1"></div>
+            <div class="hero__orb hero__orb--2"></div>
+            <div class="hero__orb hero__orb--3"></div>
+ 
             <div class="container">
-                <div class="features__header reveal">
-                    <span class="features__label">Why LaunchPad</span>
-                    <h2 class="features__title">Everything you need to start</h2>
-                    <p class="features__desc">
-                        No bloat, no complexity — just the essentials crafted with precision.
-                    </p>
-                </div>
-
-                <div class="features__grid">
-                    <div class="feature-card reveal reveal--delay-1">
-                        <div class="feature-card__icon feature-card__icon--indigo">
-                            <i data-lucide="zap" style="width:22px;height:22px;"></i>
+                <div class="hero__inner">
+                    <div class="hero__content">
+                        <div class="hero__badge">
+                            <span class="hero__badge-icon">🏙️</span>
+                            Premier IT Consultancy · Mumbai
                         </div>
-                        <h3 class="feature-card__title">Lightning Fast</h3>
-                        <p class="feature-card__desc">
-                            Optimized for performance from the ground up. Every millisecond counts.
+                        <h1 class="hero__title">
+                            <span class="hero__title-line">Empowering</span>
+                            <span class="hero__title-line">Business via</span>
+                            <span class="hero__title-gradient">Digital Excellence</span>
+                        </h1>
+                        <p class="hero__subtitle">
+                            Octave Infosys is a premier IT consultancy providing cutting-edge software development, digital marketing, and high-performance infrastructure services tailored for growth.
                         </p>
+                        <div class="hero__actions reveal">
+                            <a href="#services" class="btn--primary">
+                                Explore Services
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                            <a href="#contact" class="btn--outline">Get in Touch</a>
+                        </div>
                     </div>
-
-                    <div class="feature-card reveal reveal--delay-2">
-                        <div class="feature-card__icon feature-card__icon--cyan">
-                            <i data-lucide="layout" style="width:22px;height:22px;"></i>
+ 
+                    <!-- Right side stats -->
+                    <div class="hero__visual reveal reveal--delay-1">
+                        <div class="hero__card-stack">
+                            <div class="stat-card stat-card--main">
+                                <div class="stat-card__tag">
+                                    <span class="pulse-dot"></span>
+                                    Active Projects
+                                </div>
+                                <div class="stat-card__num">200+</div>
+                                <div class="stat-card__label">Projects delivered successfully</div>
+                            </div>
+                            <div class="stat-card stat-card--secondary">
+                                <div class="stat-mini">
+                                    <div class="stat-card__num">98%</div>
+                                    <div class="stat-card__label">Client Satisfaction</div>
+                                </div>
+                                <div class="stat-mini">
+                                    <div class="stat-card__num">8+</div>
+                                    <div class="stat-card__label">Years of Expertise</div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="feature-card__title">Clean Design</h3>
-                        <p class="feature-card__desc">
-                            Minimal, modern aesthetics that let your content breathe and shine.
-                        </p>
-                    </div>
-
-                    <div class="feature-card reveal reveal--delay-3">
-                        <div class="feature-card__icon feature-card__icon--emerald">
-                            <i data-lucide="shield-check" style="width:22px;height:22px;"></i>
-                        </div>
-                        <h3 class="feature-card__title">Solid Foundation</h3>
-                        <p class="feature-card__desc">
-                            Semantic HTML, proper structure, and best practices baked right in.
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
-
+ 
+        <!-- ==================== SERVICES ==================== -->
+        <section class="services" id="services">
+            <div class="services__divider"></div>
+            <div class="container">
+                <div class="section-header reveal">
+                    <p><span class="section-label">Our Expertise</span></p>
+                    <h2 class="section-title">End-to-End IT Services</h2>
+                </div>
+                <div class="services__grid">
+                    <div class="service-card reveal">
+                        <div class="service-icon-wrap service-icon-wrap--violet">💻</div>
+                        <div class="service-card__num">01</div>
+                        <h3 class="service-card__title">Software Development</h3>
+                        <p class="service-card__desc">Custom scalable solutions built with modern frameworks to streamline your business operations and accelerate digital transformation.</p>
+                        <span class="service-card__link">Learn more →</span>
+                    </div>
+                    <div class="service-card reveal reveal--delay-1">
+                        <div class="service-icon-wrap service-icon-wrap--sky">📈</div>
+                        <div class="service-card__num">02</div>
+                        <h3 class="service-card__title">Digital Marketing</h3>
+                        <p class="service-card__desc">Data-driven SEO, SEM, and social media strategies to amplify your brand's digital presence and drive qualified traffic.</p>
+                        <span class="service-card__link">Learn more →</span>
+                    </div>
+                    <div class="service-card reveal reveal--delay-2">
+                        <div class="service-icon-wrap service-icon-wrap--emerald">🛡️</div>
+                        <div class="service-card__num">03</div>
+                        <h3 class="service-card__title">IT Consultancy</h3>
+                        <p class="service-card__desc">Strategic technology roadmaps and infrastructure audits to ensure your business stays ahead with reliable, future-ready systems.</p>
+                        <span class="service-card__link">Learn more →</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- ==================== GALLERY ==================== -->
+        <section class="gallery" id="gallery">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p><span class="section-label">Our Workspace</span></p>
+                    <h2 class="section-title">Where Innovation Happens</h2>
+                </div>
+                <div class="gallery__grid">
+                    <!-- Large card -->
+                    <div class="gallery-card gallery-card--tall reveal">
+                        <img src="images/workshop1.png" alt="Modern Workspace"
+                            onerror="this.parentElement.innerHTML='<div class=\'gallery-placeholder\'><span>🖥️</span><p>Modern Workspace</p></div>'+this.parentElement.innerHTML.replace(this.outerHTML,'')">
+                        <div class="gallery-card__overlay">
+                            <h4 class="gallery-card__title">Modern Workspace</h4>
+                            <p class="gallery-card__sub">Collaborative environment designed for creativity</p>
+                        </div>
+                    </div>
+                    <!-- Right top -->
+                    <div class="gallery-card reveal reveal--delay-1">
+                        <img src="images/workshop2.png" alt="Team Collaboration"
+                            onerror="this.parentElement.innerHTML='<div class=\'gallery-placeholder\'><span>🤝</span><p>Team Collaboration</p></div>'+this.parentElement.innerHTML.replace(this.outerHTML,'')">
+                        <div class="gallery-card__overlay">
+                            <h4 class="gallery-card__title">Team Collaboration</h4>
+                            <p class="gallery-card__sub">Agile standups and strategy sessions</p>
+                        </div>
+                    </div>
+                    <!-- Right bottom -->
+                    <div class="gallery-card reveal reveal--delay-2">
+                        <img src="images/workshop3.png" alt="Development Hub"
+                            onerror="this.parentElement.innerHTML='<div class=\'gallery-placeholder\'><span>⚡</span><p>Development Hub</p></div>'+this.parentElement.innerHTML.replace(this.outerHTML,'')">
+                        <div class="gallery-card__overlay">
+                            <h4 class="gallery-card__title">Development Hub</h4>
+                            <p class="gallery-card__sub">High-performance tech infrastructure</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- ==================== TESTIMONIALS ==================== -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-header reveal">
+                    <p><span class="section-label">Success Stories</span></p>
+                    <h2 class="section-title">Trusted by Industry Leaders</h2>
+                </div>
+                <div class="testimonials__grid">
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-stars">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p>"Octave Infosys transformed our digital strategy. Their professional approach and technical depth are exceptional. We saw a 3x increase in qualified leads within 6 months."</p>
+                        <div class="testimonial-user">
+                            <img src="images/client1.jpg" alt="Rajesh Mehta"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div class="testimonial-avatar" style="display:none">RM</div>
+                            <div>
+                                <h4>Rajesh Mehta</h4>
+                                <span>Director, Global Trade Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal reveal--delay-1">
+                        <div class="testimonial-stars">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p>"The software solution they built for us reduced our manual workload by 40%. Highly recommended for any business looking to digitize operations efficiently."</p>
+                        <div class="testimonial-user">
+                            <img src="images/client2.jpg" alt="Sneha Kulkarni"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div class="testimonial-avatar" style="display:none">SK</div>
+                            <div>
+                                <h4>Sneha Kulkarni</h4>
+                                <span>Head of Operations, FinServe India</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal reveal--delay-2">
+                        <div class="testimonial-stars">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p>"From initial consultation to final deployment, Octave Infosys demonstrated unmatched expertise. Their cloud migration strategy saved us ₹12 lakhs annually."</p>
+                        <div class="testimonial-user">
+                            <img src="images/client3.jpg" alt="Amit Patil"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div class="testimonial-avatar" style="display:none">AP</div>
+                            <div>
+                                <h4>Amit Patil</h4>
+                                <span>CTO, LogiTrans Enterprises</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- ==================== CTA BAND ==================== -->
+        <section class="cta-band">
+            <div class="container">
+                <div class="cta-band__inner reveal">
+                    <h2 class="cta-band__title">Ready to Transform Your Business?</h2>
+                    <p class="cta-band__sub">Partner with Octave Infosys and drive real growth through technology that works.</p>
+                    <div class="cta-band__actions">
+                        <a href="#contact" class="btn--primary">
+                            Start a Conversation
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="tel:+912225600000" class="btn--outline">📞 Call Us Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
     </main>
-
-
-    <footer class="footer relative">
+ 
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer" id="contact">
         <div class="container">
-            <div class="footer__left">
-                <a href="#" class="logo" style="font-size:18px;">
-                    <div class="logo-icon" style="width:30px;height:30px;font-size:14px;border-radius:8px;">L</div>
-                    <span>LaunchPad</span>
-                </a>
-                <p class="footer__copy">&copy; 2025 LaunchPad. All rights reserved.</p>
+            <div class="footer__grid">
+ 
+                <!-- Brand column — company name only, no logo image -->
+                <div>
+                    <span class="footer__tagline">Mumbai's Trusted IT Partner</span>
+                    <span class="footer__brand-name">Octave<span>Infosys</span></span>
+                    <p class="footer__description">
+                        A Mumbai-based IT consultancy specializing in custom software development, digital marketing, and strategic technology solutions. We partner with businesses to drive growth through innovation, reliability, and measurable results.
+                    </p>
+                    <div class="footer__socials">
+                        <a class="footer__social-btn" href="#" aria-label="LinkedIn">in</a>
+                        <a class="footer__social-btn" href="#" aria-label="Twitter">𝕏</a>
+                        <a class="footer__social-btn" href="#" aria-label="Instagram">📷</a>
+                        <a class="footer__social-btn" href="#" aria-label="Facebook">f</a>
+                    </div>
+                </div>
+ 
+                <!-- Quick links -->
+                <div>
+                    <h4 class="footer__col-title">Quick Links</h4>
+                    <nav class="footer__links">
+                        <a href="#hero">Home</a>
+                        <a href="#services">Services</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#testimonials">Testimonials</a>
+                        <a href="#contact">Contact Us</a>
+                        <a href="#">About Us</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Privacy Policy</a>
+                    </nav>
+                </div>
+ 
+                <!-- Contact -->
+                <div>
+                    <h4 class="footer__col-title">Get in Touch</h4>
+                    <ul class="footer__contact-list">
+                        <li class="footer__contact-item">
+                            <div class="footer__contact-icon">📍</div>
+                            <div class="footer__contact-text">
+                                <strong>Address</strong>
+                                Shop No. 8, Zaver Road,<br>Mulund West, Mumbai — 400080
+                            </div>
+                        </li>
+                        <li class="footer__contact-item">
+                            <div class="footer__contact-icon">📞</div>
+                            <div class="footer__contact-text">
+                                <strong>Phone</strong>
+                                +91 22 2560 0000
+                            </div>
+                        </li>
+                        <li class="footer__contact-item">
+                            <div class="footer__contact-icon">✉️</div>
+                            <div class="footer__contact-text">
+                                <strong>Email</strong>
+                                info@octaveinfosys.com
+                            </div>
+                        </li>
+                        <li class="footer__contact-item">
+                            <div class="footer__contact-icon">🕐</div>
+                            <div class="footer__contact-text">
+                                <strong>Hours</strong>
+                                Mon – Sat: 10:00 AM – 7:00 PM
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+ 
+                <!-- Map -->
+                <div>
+                    <h4 class="footer__col-title">Our Location</h4>
+                    <div class="footer__map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.123!2d72.951!3d19.172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8f9e!2sMulund%20West%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1"
+                            width="100%" height="160"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Octave Infosys Office Location">
+                        </iframe>
+                    </div>
+                </div>
+ 
             </div>
-
-            <div class="footer__links">
-                <a href="#" class="footer__link">Privacy</a>
-                <a href="#" class="footer__link">Terms</a>
-                <a href="#" class="footer__link">Contact</a>
-            </div>
-
-            <div class="footer__socials">
-                <a href="#" class="footer__social" aria-label="GitHub">
-                    <i data-lucide="github" style="width:18px;height:18px;"></i>
-                </a>
-                <a href="#" class="footer__social" aria-label="Twitter">
-                    <i data-lucide="twitter" style="width:18px;height:18px;"></i>
-                </a>
-                <a href="#" class="footer__social" aria-label="LinkedIn">
-                    <i data-lucide="linkedin" style="width:18px;height:18px;"></i>
-                </a>
+ 
+            <div class="footer__bottom">
+                <p>&copy; 2026 Octave Infosys. All rights reserved. &nbsp;·&nbsp; Crafted with precision in Mumbai.</p>
+                <div class="footer__bottom-badges">
+                    <span class="footer__badge">ISO Certified</span>
+                    <span class="footer__badge">MSME Registered</span>
+                </div>
             </div>
         </div>
     </footer>
-
     <script src="js/script.js"></script>
-
 </body>
 </html>
