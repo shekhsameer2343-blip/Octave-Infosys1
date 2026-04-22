@@ -150,3 +150,14 @@
         tick();
         setInterval(tick, 1000);
     })();
+
+/* ========================================
+       SCROLL TO TOP FAB
+       ======================================== */
+    const fabTop = document.getElementById('fabTop');
+    window.addEventListener('scroll', () => {
+        fabTop.classList.toggle('visible', window.scrollY > 400);
+    });
+    fabTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
